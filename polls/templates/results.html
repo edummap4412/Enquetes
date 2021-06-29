@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <h1>{{ question.question_text }}</h1>
+  <ul>
+      {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }} : {{ choice.votes }}
+        vote{{ choice.votes | pluralize }}
+      {% endfor %}
+        </li>
+  </ul>
+  <a href="{% url 'detail' question.id %}">Mudar resposta</a><br>
+  <a href="{% url 'index' %}">Escolher outro idioma</a>
+</body>
+</html>
